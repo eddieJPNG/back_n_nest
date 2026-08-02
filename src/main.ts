@@ -1,7 +1,7 @@
-import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 
 async function bootstrap() {
@@ -12,8 +12,8 @@ async function bootstrap() {
 
 
   const config = new DocumentBuilder()
-    .setTitle('User API')
-    .setDescription('API de usuários')
+    .setTitle('Lu Ban API')
+    .setDescription('Projeto para estudo de backend com NestJS')
     .setVersion('1.0')
     .build();
 

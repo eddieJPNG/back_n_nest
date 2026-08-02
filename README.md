@@ -5,7 +5,7 @@
 <h1 align="center">Lu ban API</h1>
 
 <p align="center">
-  RESTful API para gerenciamento de usuários construída com NestJS, Prisma e TypeScript.
+  Projeto para estudo do ecossistema backend typescript
 </p>
 
 <p align="center">
@@ -13,6 +13,10 @@
   <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
   <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
 </p>
+
+<img
+src="assets/lu_ban_API.png"
+/>
 
 ---
 

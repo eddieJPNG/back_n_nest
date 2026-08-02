@@ -2,97 +2,172 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<h1 align="center">User API</h1>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+<p align="center">
+  RESTful API para gerenciamento de usuários construída com NestJS, Prisma e TypeScript.
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+<p align="center">
+  <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+  <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+  <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+</p>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Project setup
+## Sobre
 
-```bash
-$ npm install
+**User API** é uma API RESTful para CRUD de usuários, desenvolvida com boas práticas de arquitetura e design de software. O projeto utiliza NestJS como framework, Prisma como ORM e SQLite como banco de dados, com documentação Swagger integrada.
+
+## Funcionalidades
+
+- **CRUD de Usuários** — Criar, listar, buscar e deletar usuários
+- **Validação de Dados** — Validação automática dos campos de entrada via `class-validator`
+- **Tratamento de Erros** — Exceções HTTP adequadas (`ConflictException`, `NotFoundException`)
+- **Documentação Swagger** — Interface interativa de documentação da API disponível em `/docs`
+- **Banco de Dados SQLite** — Persistência local com Prisma + adapter LibSQL
+- **Testes E2E** — Cobertura de testes de ponta a ponta com Supertest
+
+## Stack
+
+| Tecnologia | Versão | Descrição |
+|------------|--------|-----------|
+| [NestJS](https://nestjs.com/) | v11 | Framework Node.js para aplicações server-side |
+| [TypeScript](https://www.typescriptlang.org/) | v5.9 | Tipagem estática para JavaScript |
+| [Prisma](https://www.prisma.io/) | v7.5 | ORM moderno e type-safe |
+| [SQLite](https://www.sqlite.org/) | — | Banco de dados leve e serverless |
+| [Swagger](https://swagger.io/) | — | Documentação OpenAPI da API |
+| [Jest](https://jestjs.io/) | v30 | Framework de testes |
+| [Supertest](https://github.com/visionmedia/supertest) | v7 | Testes HTTP/E2E |
+| [ESLint](https://eslint.org/) | v9 | Linter para manter qualidade de código |
+| [Prettier](https://prettier.io/) | — | Formatador de código |
+
+## Estrutura do Projeto
+
+```
+src/
+├── prisma/
+│   ├── prisma.module.ts        # Módulo global do Prisma
+│   └── prisma.service.ts       # Serviço de conexão com o banco
+├── users/
+│   ├── dto/
+│   │   ├── create-user.dto.ts  # DTO para criação de usuário
+│   │   └── user-response.dto.ts # DTO de resposta do usuário
+│   ├── user.module.ts          # Módulo de usuários
+│   ├── users.controller.ts     # Controller com endpoints REST
+│   └── users.service.ts        # Lógica de negócio dos usuários
+├── app.module.ts               # Módulo raiz da aplicação
+├── app.controller.ts           # Controller principal (health check)
+├── app.service.ts              # Serviço principal
+└── main.ts                     # Ponto de entrada da aplicação
 ```
 
-## Compile and run the project
+## Endpoints
 
-```bash
-# development
-$ npm run start
+| Método | Rota | Descrição | Status Code |
+|--------|------|-----------|-------------|
+| `GET` | `/` | Health check | `200` |
+| `POST` | `/users` | Criar um novo usuário | `201` |
+| `GET` | `/users` | Listar todos os usuários | `200` |
+| `GET` | `/users/:id` | Buscar usuário por ID | `200` |
+| `DELETE` | `/users/:id` | Deletar usuário por ID | `204` |
 
-# watch mode
-$ npm run start:dev
+## Modelo de Dados
 
-# production mode
-$ npm run start:prod
+```prisma
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 ```
 
-## Run tests
+## Pré-requisitos
+
+- [Node.js](https://nodejs.org/) v18 ou superior
+- npm ou yarn
+
+## Instalação
 
 ```bash
-# unit tests
-$ npm run test
+# Clonar o repositório
+git clone https://github.com/eddiewav/user_api_nestjs.git
+cd user_api_nestjs
 
-# e2e tests
-$ npm run test:e2e
+# Instalar dependências
+npm install
 
-# test coverage
-$ npm run test:cov
+# Gerar cliente do Prisma
+npx prisma generate
+
+# Executar migrações do banco de dados
+npm run db:migrate
 ```
 
-## Deployment
+## Configuração
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+O projeto utiliza SQLite local. Crie um arquivo `.env` na raiz do projeto:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+```env
+DATABASE_URL="file:./dev.db"
+PORT=3000
+```
+
+Para testes E2E, o arquivo `.env.test` já está configurado:
+
+```env
+DATABASE_URL="file:./test.db"
+```
+
+## Uso
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Desenvolvimento (com hot reload)
+npm run dev
+
+# Build de produção
+npm run build
+
+# Iniciar em produção
+npm run start:prod
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+A API estará disponível em `http://localhost:3000`. A documentação Swagger está disponível em `http://localhost:3000/docs`.
 
-## Resources
+## Comandos Disponíveis
 
-Check out a few resources that may come in handy when working with NestJS:
+| Comando | Descrição |
+|---------|-----------|
+| `npm run dev` | Inicia o servidor em modo de desenvolvimento |
+| `npm run build` | Gera o build de produção |
+| `npm run start` | Inicia a aplicação em produção |
+| `npm run start:debug` | Inicia em modo debug |
+| `npm run lint` | Roda o ESLint com auto-fix |
+| `npm run format` | Formata o código com Prettier |
+| `npm run test` | Executa os testes unitários |
+| `npm run test:cov` | Executa testes com cobertura |
+| `npm run test:e2e` | Executa testes end-to-end |
+| `npm run db:migrate` | Roda as migrações do Prisma |
+| `npm run db:studio` | Abre o Prisma Studio (GUI do banco) |
+| `npm run db:reset` | Reseta o banco de dados |
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Testes
 
-## Support
+```bash
+# Testes unitários
+npm run test
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+# Testes com cobertura
+npm run test:cov
 
-## Stay in touch
+# Testes E2E
+npm run test:e2e
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Licença
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

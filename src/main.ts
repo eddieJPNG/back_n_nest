@@ -12,7 +12,7 @@ async function bootstrap() {
 
 
   const config = new DocumentBuilder()
-    .setTitle('Lu Ban API')
+    .setTitle('Back N\' Nest')
     .setDescription('Projeto para estudo de backend com NestJS')
     .setVersion('1.0')
     .build();

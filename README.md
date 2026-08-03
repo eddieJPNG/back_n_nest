@@ -2,7 +2,7 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-<h1 align="center">Lu ban API</h1>
+<h1 align="center">Back n' Nest</h1>
 
 <p align="center">
   Projeto para estudo do ecossistema backend typescript
@@ -22,7 +22,7 @@ src="assets/lu_ban_API.png"
 
 ## Sobre
 
-**Lu Ban API** é um projeto para desenvolvimento pessoal e profissional de vários ecossistemas do campo backend e typescript com base numa API de usuários.
+**Back n' Nest** é um projeto para desenvolvimento pessoal e profissional de vários ecossistemas do campo backend e typescript com base numa API de usuários.
 
 Com seus primeiro passo sendo uma API RESTful para CRUD de usuários, desenvolvida com boas práticas de arquitetura e design de software. O projeto utiliza NestJS como framework, Prisma como ORM e SQLite como banco de dados, com documentação Swagger integrada.
 
